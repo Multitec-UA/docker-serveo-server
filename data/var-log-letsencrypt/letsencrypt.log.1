@@ -1,0 +1,286 @@
+2023-11-07 15:12:15,925:DEBUG:certbot._internal.main:certbot version: 2.7.4
+2023-11-07 15:12:15,926:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/local/bin/certbot
+2023-11-07 15:12:15,926:DEBUG:certbot._internal.main:Arguments: ['-n', '--agree-tos', '--cert-name', 'certs', '--dns-cloudflare', '--dns-cloudflare-credentials', '/cloudflare.ini', '--email', 'contacto.multitecua@gmail.com', '-d', 'multitecua.com', '-d', '*.multitecua.com']
+2023-11-07 15:12:15,926:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#dns-cloudflare,PluginEntryPoint#manual,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-11-07 15:12:15,948:DEBUG:certbot._internal.log:Root logging level set at 30
+2023-11-07 15:12:15,950:DEBUG:certbot._internal.plugins.selection:Requested authenticator dns-cloudflare and installer None
+2023-11-07 15:12:15,950:DEBUG:certbot._internal.plugins.selection:Single candidate plugin: * dns-cloudflare
+Description: Obtain certificates using a DNS TXT record (if you are using Cloudflare for DNS).
+Interfaces: Authenticator, Plugin
+Entry point: EntryPoint(name='dns-cloudflare', value='certbot_dns_cloudflare._internal.dns_cloudflare:Authenticator', group='certbot.plugins')
+Initialized: <certbot_dns_cloudflare._internal.dns_cloudflare.Authenticator object at 0x7fa56ae060e0>
+Prep: True
+2023-11-07 15:12:15,950:DEBUG:certbot._internal.plugins.selection:Selected authenticator <certbot_dns_cloudflare._internal.dns_cloudflare.Authenticator object at 0x7fa56ae060e0> and installer None
+2023-11-07 15:12:15,951:INFO:certbot._internal.plugins.selection:Plugins selected: Authenticator dns-cloudflare, Installer None
+2023-11-07 15:12:16,079:DEBUG:certbot._internal.main:Picked account: <Account(RegistrationResource(body=Registration(key=None, contact=(), agreement=None, status=None, terms_of_service_agreed=None, only_return_existing=None, external_account_binding=None), uri='https://acme-v02.api.letsencrypt.org/acme/acct/1400958126', new_authzr_uri=None, terms_of_service=None), 1340309e0d3a2668009684ad747641d8, Meta(creation_dt=datetime.datetime(2023, 11, 7, 15, 6, 34, tzinfo=<UTC>), creation_host='3e855d761e6e', register_to_eff=None))>
+2023-11-07 15:12:16,080:DEBUG:acme.client:Sending GET request to https://acme-v02.api.letsencrypt.org/directory.
+2023-11-07 15:12:16,083:DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): acme-v02.api.letsencrypt.org:443
+2023-11-07 15:12:16,682:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "GET /directory HTTP/1.1" 200 752
+2023-11-07 15:12:16,683:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Tue, 07 Nov 2023 15:12:16 GMT
+Content-Type: application/json
+Content-Length: 752
+Connection: keep-alive
+Cache-Control: public, max-age=0, no-cache
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "kHrO_dN2GFo": "https://community.letsencrypt.org/t/adding-random-entries-to-the-directory/33417",
+  "keyChange": "https://acme-v02.api.letsencrypt.org/acme/key-change",
+  "meta": {
+    "caaIdentities": [
+      "letsencrypt.org"
+    ],
+    "termsOfService": "https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf",
+    "website": "https://letsencrypt.org"
+  },
+  "newAccount": "https://acme-v02.api.letsencrypt.org/acme/new-acct",
+  "newNonce": "https://acme-v02.api.letsencrypt.org/acme/new-nonce",
+  "newOrder": "https://acme-v02.api.letsencrypt.org/acme/new-order",
+  "renewalInfo": "https://acme-v02.api.letsencrypt.org/draft-ietf-acme-ari-01/renewalInfo/",
+  "revokeCert": "https://acme-v02.api.letsencrypt.org/acme/revoke-cert"
+}
+2023-11-07 15:12:16,684:DEBUG:certbot._internal.display.obj:Notifying user: Requesting a certificate for multitecua.com and *.multitecua.com
+2023-11-07 15:12:16,699:DEBUG:acme.client:Requesting fresh nonce
+2023-11-07 15:12:16,699:DEBUG:acme.client:Sending HEAD request to https://acme-v02.api.letsencrypt.org/acme/new-nonce.
+2023-11-07 15:12:16,894:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "HEAD /acme/new-nonce HTTP/1.1" 200 0
+2023-11-07 15:12:16,895:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Tue, 07 Nov 2023 15:12:16 GMT
+Connection: keep-alive
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Replay-Nonce: mEGmtpGSyfWAfgKJitSrP_Qmb66B80VTwcVjgyQmQ8R7n6OIXVc
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+
+2023-11-07 15:12:16,895:DEBUG:acme.client:Storing nonce: mEGmtpGSyfWAfgKJitSrP_Qmb66B80VTwcVjgyQmQ8R7n6OIXVc
+2023-11-07 15:12:16,896:DEBUG:acme.client:JWS payload:
+b'{\n  "identifiers": [\n    {\n      "type": "dns",\n      "value": "multitecua.com"\n    },\n    {\n      "type": "dns",\n      "value": "*.multitecua.com"\n    }\n  ]\n}'
+2023-11-07 15:12:16,907:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/new-order:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMTQwMDk1ODEyNiIsICJub25jZSI6ICJtRUdtdHBHU3lmV0FmZ0tKaXRTclBfUW1iNjZCODBWVHdjVmpneVFtUThSN242T0lYVmMiLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL25ldy1vcmRlciJ9",
+  "signature": "G3l1Giq7JBHyyy71qYeIrdC30WAWH-s6rlFgj47ovShyUvWkxoNKzflJvB4kObBvY96MwMeH3GCGJu7lGI2e6r3vNDqRdp78RIOc0G1-0yZpwIO-Rhu7LaX0vF8h-uvmhYjIS4qDcXxsI619CvzH62_yKqNlQIuzG3dNKI3iDrtYbtwwBoSxy8JRxrZWiQCp6eWETiaBoqgqFt0sumGTM_D1IMTDGbTVDwPEt6jtzRijHgTgrCficDzqwB7EIzYG1o1MpQelrQSmsmQuffNRr5YGLp6LP45uMUqx_hZyZwY2cWsXElz-D0a_OsjTLRZvTK5gPGvCXhHMuSoesLZ1VA",
+  "payload": "ewogICJpZGVudGlmaWVycyI6IFsKICAgIHsKICAgICAgInR5cGUiOiAiZG5zIiwKICAgICAgInZhbHVlIjogIm11bHRpdGVjdWEuY29tIgogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAiZG5zIiwKICAgICAgInZhbHVlIjogIioubXVsdGl0ZWN1YS5jb20iCiAgICB9CiAgXQp9"
+}
+2023-11-07 15:12:17,246:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/new-order HTTP/1.1" 201 479
+2023-11-07 15:12:17,247:DEBUG:acme.client:Received response:
+HTTP 201
+Server: nginx
+Date: Tue, 07 Nov 2023 15:12:17 GMT
+Content-Type: application/json
+Content-Length: 479
+Connection: keep-alive
+Boulder-Requester: 1400958126
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Location: https://acme-v02.api.letsencrypt.org/acme/order/1400958126/220544591966
+Replay-Nonce: mEGmtpGSVWVRy5ZbG-LCyrwPyCdLhmZMXrf_WFkoQAK8_iSZWVA
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "status": "pending",
+  "expires": "2023-11-14T15:10:55Z",
+  "identifiers": [
+    {
+      "type": "dns",
+      "value": "*.multitecua.com"
+    },
+    {
+      "type": "dns",
+      "value": "multitecua.com"
+    }
+  ],
+  "authorizations": [
+    "https://acme-v02.api.letsencrypt.org/acme/authz-v3/281509007196",
+    "https://acme-v02.api.letsencrypt.org/acme/authz-v3/281509935236"
+  ],
+  "finalize": "https://acme-v02.api.letsencrypt.org/acme/finalize/1400958126/220544591966"
+}
+2023-11-07 15:12:17,248:DEBUG:acme.client:Storing nonce: mEGmtpGSVWVRy5ZbG-LCyrwPyCdLhmZMXrf_WFkoQAK8_iSZWVA
+2023-11-07 15:12:17,249:DEBUG:acme.client:JWS payload:
+b''
+2023-11-07 15:12:17,254:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/authz-v3/281509007196:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMTQwMDk1ODEyNiIsICJub25jZSI6ICJtRUdtdHBHU1ZXVlJ5NVpiRy1MQ3lyd1B5Q2RMaG1aTVhyZl9XRmtvUUFLOF9pU1pXVkEiLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2F1dGh6LXYzLzI4MTUwOTAwNzE5NiJ9",
+  "signature": "nOy4UhMOUJ7k6cCbgTAS9uQKdK8vKy0Q2SN-ekgXxUlvq6aYWCZf74qp03ST3-fv-6D20mHudTnStvcK9DvSQsDu-54A88e5HgVkekr-qpNbsezDYUu6hvoKrpBNVIE-rV95UD6kA7VuA-taYA3hvEWbazbtGxlcZxUGynbGq43tdp91rdfH7ilXlHA0prHLeUwonulZpkSlYKLE9yl9NDX4j5Ya9upcBVN7cWWci0nY0tCJXzWnAs8vDUwjN6SAuq7DdSrN088gQdiB2PgH19_oqLR93bzZEJ0phdK8oc0m8GCJwE3SXZK5rNDCN87whEoyrE8qln6TaKAh-EZvQA",
+  "payload": ""
+}
+2023-11-07 15:12:17,448:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/authz-v3/281509007196 HTTP/1.1" 200 523
+2023-11-07 15:12:17,449:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Tue, 07 Nov 2023 15:12:17 GMT
+Content-Type: application/json
+Content-Length: 523
+Connection: keep-alive
+Boulder-Requester: 1400958126
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Replay-Nonce: mEGmtpGSYz1tqitVK5Iizd3X9lYsW6bqoI9K272dtlkQqP-gW2w
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "identifier": {
+    "type": "dns",
+    "value": "multitecua.com"
+  },
+  "status": "valid",
+  "expires": "2023-12-07T15:06:52Z",
+  "challenges": [
+    {
+      "type": "dns-01",
+      "status": "valid",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall-v3/281509007196/khQw5w",
+      "token": "tUBwzxWG9D210XOhuGPWkXonWVNFccQHRH6gnTjVCpc",
+      "validationRecord": [
+        {
+          "hostname": "multitecua.com"
+        }
+      ],
+      "validated": "2023-11-07T15:06:51Z"
+    }
+  ],
+  "wildcard": true
+}
+2023-11-07 15:12:17,450:DEBUG:acme.client:Storing nonce: mEGmtpGSYz1tqitVK5Iizd3X9lYsW6bqoI9K272dtlkQqP-gW2w
+2023-11-07 15:12:17,451:DEBUG:acme.client:JWS payload:
+b''
+2023-11-07 15:12:17,456:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/authz-v3/281509935236:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMTQwMDk1ODEyNiIsICJub25jZSI6ICJtRUdtdHBHU1l6MXRxaXRWSzVJaXpkM1g5bFlzVzZicW9JOUsyNzJkdGxrUXFQLWdXMnciLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2F1dGh6LXYzLzI4MTUwOTkzNTIzNiJ9",
+  "signature": "SdI95Fluj8HCFTcCywAjDyWjEMxroI7r17hM5WnNNJ5bIOGFGWGfeV1fbi00vVBWlTBEksacD4M4oXhn0rvWXGTHKp5XOnyjY2CQ8BFjzl80RJ3oYzwIed6BPL01snPrVhTr_jwZp5GieGiWxyhR_npkhliGSjR3dS-XH4mbgsDKR_Mi20FSM00vjQii5e7Bd5aE_vsETMaCivmJdLpPeKi4Wlt8P8B62jGne2iN8CMLxfRW4m7L1tgtM6XK9KUqLOX_MikD984VjX8QM-uuYdXLKP6rp5aNhiX7cS2PeN5mf7vOwwDjTMSvbQ7rhjYAlL9Y7UcV2xJ8sRnnq7jWGw",
+  "payload": ""
+}
+2023-11-07 15:12:17,634:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/authz-v3/281509935236 HTTP/1.1" 200 798
+2023-11-07 15:12:17,635:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Tue, 07 Nov 2023 15:12:17 GMT
+Content-Type: application/json
+Content-Length: 798
+Connection: keep-alive
+Boulder-Requester: 1400958126
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Replay-Nonce: M1qVDtAvPO22ieP_Bpr6qW6BRtwtnHqUktyiPP127zT4Tf578cQ
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "identifier": {
+    "type": "dns",
+    "value": "multitecua.com"
+  },
+  "status": "pending",
+  "expires": "2023-11-14T15:10:55Z",
+  "challenges": [
+    {
+      "type": "http-01",
+      "status": "pending",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall-v3/281509935236/DMA9ig",
+      "token": "nnMHXT0RvPvWqpew9UbQsLRhfB1TgZTojrzU-mbfgDA"
+    },
+    {
+      "type": "dns-01",
+      "status": "pending",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall-v3/281509935236/yorNJg",
+      "token": "nnMHXT0RvPvWqpew9UbQsLRhfB1TgZTojrzU-mbfgDA"
+    },
+    {
+      "type": "tls-alpn-01",
+      "status": "pending",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall-v3/281509935236/ek9q2A",
+      "token": "nnMHXT0RvPvWqpew9UbQsLRhfB1TgZTojrzU-mbfgDA"
+    }
+  ]
+}
+2023-11-07 15:12:17,636:DEBUG:acme.client:Storing nonce: M1qVDtAvPO22ieP_Bpr6qW6BRtwtnHqUktyiPP127zT4Tf578cQ
+2023-11-07 15:12:17,637:INFO:certbot._internal.auth_handler:Performing the following challenges:
+2023-11-07 15:12:17,637:INFO:certbot._internal.auth_handler:dns-01 challenge for multitecua.com
+2023-11-07 15:12:17,658:DEBUG:urllib3.util.retry:Converted retries value: 5 -> Retry(total=5, connect=None, read=None, redirect=None, status=None)
+2023-11-07 15:12:17,664:DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.cloudflare.com:443
+2023-11-07 15:12:18,645:DEBUG:urllib3.connectionpool:https://api.cloudflare.com:443 "GET /client/v4/zones?name=multitecua.com&per_page=1 HTTP/1.1" 400 None
+2023-11-07 15:12:18,652:DEBUG:certbot._internal.error_handler:Encountered exception:
+Traceback (most recent call last):
+  File "/opt/certbot/src/plugin/certbot_dns_cloudflare/_internal/dns_cloudflare.py", line 198, in _find_zone_id
+    zones = self.cf.zones.get(params=params)  # zones | pylint: disable=no-member
+  File "/usr/local/lib/python3.10/site-packages/CloudFlare/cloudflare.py", line 679, in get
+    return self._base.do_auth('GET', self._parts, [identifier1, identifier2, identifier3, identifier4], params, data)
+  File "/usr/local/lib/python3.10/site-packages/CloudFlare/cloudflare.py", line 133, in do_auth
+    return self._call(method, headers, parts, identifiers, params, data, files)
+  File "/usr/local/lib/python3.10/site-packages/CloudFlare/cloudflare.py", line 510, in _call
+    raise CloudFlareAPIError(code, message, error_chain)
+CloudFlare.exceptions.CloudFlareAPIError: Invalid request headers
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/certbot/src/certbot/certbot/_internal/auth_handler.py", line 88, in handle_authorizations
+    resps = self.auth.perform(achalls)
+  File "/opt/certbot/src/certbot/certbot/plugins/dns_common.py", line 76, in perform
+    self._perform(domain, validation_domain_name, validation)
+  File "/opt/certbot/src/plugin/certbot_dns_cloudflare/_internal/dns_cloudflare.py", line 76, in _perform
+    self._get_cloudflare_client().add_txt_record(domain, validation_name, validation, self.ttl)
+  File "/opt/certbot/src/plugin/certbot_dns_cloudflare/_internal/dns_cloudflare.py", line 121, in add_txt_record
+    zone_id = self._find_zone_id(domain)
+  File "/opt/certbot/src/plugin/certbot_dns_cloudflare/_internal/dns_cloudflare.py", line 215, in _find_zone_id
+    raise errors.PluginError('Error determining zone_id: {0} {1}. Please confirm '
+certbot.errors.PluginError: Error determining zone_id: 6003 Invalid request headers. Please confirm that you have supplied valid Cloudflare API credentials. (Did you copy your entire API token/key? To use Cloudflare tokens, you'll need the python package cloudflare>=2.3.1. This certbot is running cloudflare 2.12.4)
+
+2023-11-07 15:12:18,652:DEBUG:certbot._internal.error_handler:Calling registered functions
+2023-11-07 15:12:18,652:INFO:certbot._internal.auth_handler:Cleaning up challenges
+2023-11-07 15:12:18,671:DEBUG:urllib3.util.retry:Converted retries value: 5 -> Retry(total=5, connect=None, read=None, redirect=None, status=None)
+2023-11-07 15:12:18,674:DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.cloudflare.com:443
+2023-11-07 15:12:19,631:DEBUG:urllib3.connectionpool:https://api.cloudflare.com:443 "GET /client/v4/zones?name=multitecua.com&per_page=1 HTTP/1.1" 400 None
+2023-11-07 15:12:19,634:DEBUG:certbot_dns_cloudflare._internal.dns_cloudflare:Encountered error finding zone_id during deletion: Error determining zone_id: 6003 Invalid request headers. Please confirm that you have supplied valid Cloudflare API credentials. (Did you copy your entire API token/key? To use Cloudflare tokens, you'll need the python package cloudflare>=2.3.1. This certbot is running cloudflare 2.12.4)
+2023-11-07 15:12:19,640:DEBUG:certbot._internal.log:Exiting abnormally:
+Traceback (most recent call last):
+  File "/opt/certbot/src/plugin/certbot_dns_cloudflare/_internal/dns_cloudflare.py", line 198, in _find_zone_id
+    zones = self.cf.zones.get(params=params)  # zones | pylint: disable=no-member
+  File "/usr/local/lib/python3.10/site-packages/CloudFlare/cloudflare.py", line 679, in get
+    return self._base.do_auth('GET', self._parts, [identifier1, identifier2, identifier3, identifier4], params, data)
+  File "/usr/local/lib/python3.10/site-packages/CloudFlare/cloudflare.py", line 133, in do_auth
+    return self._call(method, headers, parts, identifiers, params, data, files)
+  File "/usr/local/lib/python3.10/site-packages/CloudFlare/cloudflare.py", line 510, in _call
+    raise CloudFlareAPIError(code, message, error_chain)
+CloudFlare.exceptions.CloudFlareAPIError: Invalid request headers
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/bin/certbot", line 33, in <module>
+    sys.exit(load_entry_point('certbot', 'console_scripts', 'certbot')())
+  File "/opt/certbot/src/certbot/certbot/main.py", line 19, in main
+    return internal_main.main(cli_args)
+  File "/opt/certbot/src/certbot/certbot/_internal/main.py", line 1873, in main
+    return config.func(config, plugins)
+  File "/opt/certbot/src/certbot/certbot/_internal/main.py", line 1600, in certonly
+    lineage = _get_and_save_cert(le_client, config, domains, certname, lineage)
+  File "/opt/certbot/src/certbot/certbot/_internal/main.py", line 143, in _get_and_save_cert
+    lineage = le_client.obtain_and_enroll_certificate(domains, certname)
+  File "/opt/certbot/src/certbot/certbot/_internal/client.py", line 517, in obtain_and_enroll_certificate
+    cert, chain, key, _ = self.obtain_certificate(domains)
+  File "/opt/certbot/src/certbot/certbot/_internal/client.py", line 428, in obtain_certificate
+    orderr = self._get_order_and_authorizations(csr.data, self.config.allow_subset_of_names)
+  File "/opt/certbot/src/certbot/certbot/_internal/client.py", line 496, in _get_order_and_authorizations
+    authzr = self.auth_handler.handle_authorizations(orderr, self.config, best_effort)
+  File "/opt/certbot/src/certbot/certbot/_internal/auth_handler.py", line 88, in handle_authorizations
+    resps = self.auth.perform(achalls)
+  File "/opt/certbot/src/certbot/certbot/plugins/dns_common.py", line 76, in perform
+    self._perform(domain, validation_domain_name, validation)
+  File "/opt/certbot/src/plugin/certbot_dns_cloudflare/_internal/dns_cloudflare.py", line 76, in _perform
+    self._get_cloudflare_client().add_txt_record(domain, validation_name, validation, self.ttl)
+  File "/opt/certbot/src/plugin/certbot_dns_cloudflare/_internal/dns_cloudflare.py", line 121, in add_txt_record
+    zone_id = self._find_zone_id(domain)
+  File "/opt/certbot/src/plugin/certbot_dns_cloudflare/_internal/dns_cloudflare.py", line 215, in _find_zone_id
+    raise errors.PluginError('Error determining zone_id: {0} {1}. Please confirm '
+certbot.errors.PluginError: Error determining zone_id: 6003 Invalid request headers. Please confirm that you have supplied valid Cloudflare API credentials. (Did you copy your entire API token/key? To use Cloudflare tokens, you'll need the python package cloudflare>=2.3.1. This certbot is running cloudflare 2.12.4)
+2023-11-07 15:12:19,644:ERROR:certbot._internal.log:Error determining zone_id: 6003 Invalid request headers. Please confirm that you have supplied valid Cloudflare API credentials. (Did you copy your entire API token/key? To use Cloudflare tokens, you'll need the python package cloudflare>=2.3.1. This certbot is running cloudflare 2.12.4)

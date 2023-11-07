@@ -1,0 +1,578 @@
+2023-11-07 15:20:36,647:DEBUG:certbot._internal.main:certbot version: 2.7.4
+2023-11-07 15:20:36,648:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/local/bin/certbot
+2023-11-07 15:20:36,648:DEBUG:certbot._internal.main:Arguments: ['-n', '--agree-tos', '--cert-name', 'certs', '--dns-cloudflare', '--dns-cloudflare-credentials', '/cloudflare.ini', '--email', 'contacto.multitecua@gmail.com', '-d', 'multitecua.com', '-d', '*.multitecua.com']
+2023-11-07 15:20:36,648:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#dns-cloudflare,PluginEntryPoint#manual,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-11-07 15:20:36,671:DEBUG:certbot._internal.log:Root logging level set at 30
+2023-11-07 15:20:36,672:DEBUG:certbot._internal.plugins.selection:Requested authenticator dns-cloudflare and installer None
+2023-11-07 15:20:36,672:DEBUG:certbot._internal.plugins.selection:Single candidate plugin: * dns-cloudflare
+Description: Obtain certificates using a DNS TXT record (if you are using Cloudflare for DNS).
+Interfaces: Authenticator, Plugin
+Entry point: EntryPoint(name='dns-cloudflare', value='certbot_dns_cloudflare._internal.dns_cloudflare:Authenticator', group='certbot.plugins')
+Initialized: <certbot_dns_cloudflare._internal.dns_cloudflare.Authenticator object at 0x7fc9f14d60e0>
+Prep: True
+2023-11-07 15:20:36,673:DEBUG:certbot._internal.plugins.selection:Selected authenticator <certbot_dns_cloudflare._internal.dns_cloudflare.Authenticator object at 0x7fc9f14d60e0> and installer None
+2023-11-07 15:20:36,673:INFO:certbot._internal.plugins.selection:Plugins selected: Authenticator dns-cloudflare, Installer None
+2023-11-07 15:20:36,801:DEBUG:certbot._internal.main:Picked account: <Account(RegistrationResource(body=Registration(key=None, contact=(), agreement=None, status=None, terms_of_service_agreed=None, only_return_existing=None, external_account_binding=None), uri='https://acme-v02.api.letsencrypt.org/acme/acct/1400958126', new_authzr_uri=None, terms_of_service=None), 1340309e0d3a2668009684ad747641d8, Meta(creation_dt=datetime.datetime(2023, 11, 7, 15, 6, 34, tzinfo=<UTC>), creation_host='3e855d761e6e', register_to_eff=None))>
+2023-11-07 15:20:36,802:DEBUG:acme.client:Sending GET request to https://acme-v02.api.letsencrypt.org/directory.
+2023-11-07 15:20:36,805:DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): acme-v02.api.letsencrypt.org:443
+2023-11-07 15:20:37,503:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "GET /directory HTTP/1.1" 200 752
+2023-11-07 15:20:37,504:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Tue, 07 Nov 2023 15:20:37 GMT
+Content-Type: application/json
+Content-Length: 752
+Connection: keep-alive
+Cache-Control: public, max-age=0, no-cache
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "6C-3tRZu7jo": "https://community.letsencrypt.org/t/adding-random-entries-to-the-directory/33417",
+  "keyChange": "https://acme-v02.api.letsencrypt.org/acme/key-change",
+  "meta": {
+    "caaIdentities": [
+      "letsencrypt.org"
+    ],
+    "termsOfService": "https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf",
+    "website": "https://letsencrypt.org"
+  },
+  "newAccount": "https://acme-v02.api.letsencrypt.org/acme/new-acct",
+  "newNonce": "https://acme-v02.api.letsencrypt.org/acme/new-nonce",
+  "newOrder": "https://acme-v02.api.letsencrypt.org/acme/new-order",
+  "renewalInfo": "https://acme-v02.api.letsencrypt.org/draft-ietf-acme-ari-01/renewalInfo/",
+  "revokeCert": "https://acme-v02.api.letsencrypt.org/acme/revoke-cert"
+}
+2023-11-07 15:20:37,506:DEBUG:certbot._internal.display.obj:Notifying user: Requesting a certificate for multitecua.com and *.multitecua.com
+2023-11-07 15:20:37,519:DEBUG:acme.client:Requesting fresh nonce
+2023-11-07 15:20:37,520:DEBUG:acme.client:Sending HEAD request to https://acme-v02.api.letsencrypt.org/acme/new-nonce.
+2023-11-07 15:20:37,732:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "HEAD /acme/new-nonce HTTP/1.1" 200 0
+2023-11-07 15:20:37,733:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Tue, 07 Nov 2023 15:20:37 GMT
+Connection: keep-alive
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Replay-Nonce: QBeJ2mufJxIqGjSBG30M1Ebqf4t9cCSnu9UvhD_jtGxLg7TATEU
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+
+2023-11-07 15:20:37,734:DEBUG:acme.client:Storing nonce: QBeJ2mufJxIqGjSBG30M1Ebqf4t9cCSnu9UvhD_jtGxLg7TATEU
+2023-11-07 15:20:37,734:DEBUG:acme.client:JWS payload:
+b'{\n  "identifiers": [\n    {\n      "type": "dns",\n      "value": "multitecua.com"\n    },\n    {\n      "type": "dns",\n      "value": "*.multitecua.com"\n    }\n  ]\n}'
+2023-11-07 15:20:37,745:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/new-order:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMTQwMDk1ODEyNiIsICJub25jZSI6ICJRQmVKMm11Zkp4SXFHalNCRzMwTTFFYnFmNHQ5Y0NTbnU5VXZoRF9qdEd4TGc3VEFURVUiLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL25ldy1vcmRlciJ9",
+  "signature": "cPjdAV7F8jSvCIpJUv84uopU4xvLRQ7Kkr3tLSYNzeAclV0t7GPQy4ETyJFZ1sRQmqnpJCm4haQbgoW1z-abdNVK9Jbmmvm840zyAQYsd5NTw1nXjjaryEADwy44DdMzaPOT8HevRMXpAhSaoz9Tgt58YuUg5gFzXOaPd9kEI_S-XGLRuIfIlitajodGWbhZ0eugdbjFWinj-cOfT5nktZrs3YruchCflinOfVV0NtWJI9QaTO2AaoPzGlgONgj7QrFeMsQxYqEmBwqlR7-dxGujU0CNam6Z3xBE5ciURI29d4ik2CL3Lvkd9dT1kp7GssLTv6-WiOg3s6012DzI4Q",
+  "payload": "ewogICJpZGVudGlmaWVycyI6IFsKICAgIHsKICAgICAgInR5cGUiOiAiZG5zIiwKICAgICAgInZhbHVlIjogIm11bHRpdGVjdWEuY29tIgogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAiZG5zIiwKICAgICAgInZhbHVlIjogIioubXVsdGl0ZWN1YS5jb20iCiAgICB9CiAgXQp9"
+}
+2023-11-07 15:20:37,999:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/new-order HTTP/1.1" 201 479
+2023-11-07 15:20:38,001:DEBUG:acme.client:Received response:
+HTTP 201
+Server: nginx
+Date: Tue, 07 Nov 2023 15:20:37 GMT
+Content-Type: application/json
+Content-Length: 479
+Connection: keep-alive
+Boulder-Requester: 1400958126
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Location: https://acme-v02.api.letsencrypt.org/acme/order/1400958126/220545823226
+Replay-Nonce: 254jphsyb_oWfz7WMs9rXHgEi3dnRIxrDX-x6F8JG3UhOQNYhr0
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "status": "pending",
+  "expires": "2023-11-14T15:10:55Z",
+  "identifiers": [
+    {
+      "type": "dns",
+      "value": "*.multitecua.com"
+    },
+    {
+      "type": "dns",
+      "value": "multitecua.com"
+    }
+  ],
+  "authorizations": [
+    "https://acme-v02.api.letsencrypt.org/acme/authz-v3/281509007196",
+    "https://acme-v02.api.letsencrypt.org/acme/authz-v3/281509935236"
+  ],
+  "finalize": "https://acme-v02.api.letsencrypt.org/acme/finalize/1400958126/220545823226"
+}
+2023-11-07 15:20:38,001:DEBUG:acme.client:Storing nonce: 254jphsyb_oWfz7WMs9rXHgEi3dnRIxrDX-x6F8JG3UhOQNYhr0
+2023-11-07 15:20:38,002:DEBUG:acme.client:JWS payload:
+b''
+2023-11-07 15:20:38,007:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/authz-v3/281509007196:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMTQwMDk1ODEyNiIsICJub25jZSI6ICIyNTRqcGhzeWJfb1dmejdXTXM5clhIZ0VpM2RuUkl4ckRYLXg2RjhKRzNVaE9RTllocjAiLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2F1dGh6LXYzLzI4MTUwOTAwNzE5NiJ9",
+  "signature": "Yah7RNXcZROoar-ZHCTk2G8X8EyFOO59fKNcPiWWpJqxcPbJyoqQTpl-ONGfDHM-ytCpZFeGU4V3fJKMxdueWVyKR5M3dUGMnA9ynY3rdB6_toB219eikXdaENWYPOjLOWMUYv07EK6CavHyPzHorIP-MXH3xVfZxbKypaNssMZihYhML5tOma3zMt3plXVYEu8sIynYPZmrvdpqxIzhjM77q_gNhwSNwDa-dwSVwzlCpzNbD9xOzI0ODld0eonrAXruNA0XQ4WG_xBiU155oBICd9UvTyixx6brNGI0io1K0CXOeHco-KY4zLdmuebhPf4OOTrgQ9dNsP7AB2q1xQ",
+  "payload": ""
+}
+2023-11-07 15:20:38,217:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/authz-v3/281509007196 HTTP/1.1" 200 523
+2023-11-07 15:20:38,218:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Tue, 07 Nov 2023 15:20:38 GMT
+Content-Type: application/json
+Content-Length: 523
+Connection: keep-alive
+Boulder-Requester: 1400958126
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Replay-Nonce: 254jphsyrTuoOEPMPPbqJdFs3n49RnJjz2hLvhh4nfupV8LxT34
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "identifier": {
+    "type": "dns",
+    "value": "multitecua.com"
+  },
+  "status": "valid",
+  "expires": "2023-12-07T15:06:52Z",
+  "challenges": [
+    {
+      "type": "dns-01",
+      "status": "valid",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall-v3/281509007196/khQw5w",
+      "token": "tUBwzxWG9D210XOhuGPWkXonWVNFccQHRH6gnTjVCpc",
+      "validationRecord": [
+        {
+          "hostname": "multitecua.com"
+        }
+      ],
+      "validated": "2023-11-07T15:06:51Z"
+    }
+  ],
+  "wildcard": true
+}
+2023-11-07 15:20:38,219:DEBUG:acme.client:Storing nonce: 254jphsyrTuoOEPMPPbqJdFs3n49RnJjz2hLvhh4nfupV8LxT34
+2023-11-07 15:20:38,220:DEBUG:acme.client:JWS payload:
+b''
+2023-11-07 15:20:38,225:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/authz-v3/281509935236:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMTQwMDk1ODEyNiIsICJub25jZSI6ICIyNTRqcGhzeXJUdW9PRVBNUFBicUpkRnMzbjQ5Um5KanoyaEx2aGg0bmZ1cFY4THhUMzQiLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2F1dGh6LXYzLzI4MTUwOTkzNTIzNiJ9",
+  "signature": "gpslbrBTJN5YkZHtV7B5BjdpeZkqKZDjh2SgTQMDEY2tL35W-yYdkt4OeC0APRa3Stf7xgKT17hH6BGCYgXkkSI-_-5zqwMZOUu9tQp6uGeukV9e9ajjI_ETC_yEUtAt22QRl1kVZPjPgOsg4UZA8ze2mb76Qs-CHyiA8AiloXgzvpAsx2G_cJhzweSyPkfxZrvqKeDpWOBmqm0nY18c6BtFE6TEzTAFBdZT6_wLsVGY7GGZ-3UYLagiBAOjdhkIUEsNCydrHyH_WBDCBWweAnq-iSVuglIdObcSzDLuxnfRnxKPMPtTBTiFf4P0eL7Dk1fuMqmnLrLXSql0Jex3Pw",
+  "payload": ""
+}
+2023-11-07 15:20:38,496:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/authz-v3/281509935236 HTTP/1.1" 200 798
+2023-11-07 15:20:38,497:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Tue, 07 Nov 2023 15:20:38 GMT
+Content-Type: application/json
+Content-Length: 798
+Connection: keep-alive
+Boulder-Requester: 1400958126
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Replay-Nonce: 254jphsyrFCtNvIg-z-ovk99aOCyAcAxGFoLSboaZB9NWmbjXEc
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "identifier": {
+    "type": "dns",
+    "value": "multitecua.com"
+  },
+  "status": "pending",
+  "expires": "2023-11-14T15:10:55Z",
+  "challenges": [
+    {
+      "type": "http-01",
+      "status": "pending",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall-v3/281509935236/DMA9ig",
+      "token": "nnMHXT0RvPvWqpew9UbQsLRhfB1TgZTojrzU-mbfgDA"
+    },
+    {
+      "type": "dns-01",
+      "status": "pending",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall-v3/281509935236/yorNJg",
+      "token": "nnMHXT0RvPvWqpew9UbQsLRhfB1TgZTojrzU-mbfgDA"
+    },
+    {
+      "type": "tls-alpn-01",
+      "status": "pending",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall-v3/281509935236/ek9q2A",
+      "token": "nnMHXT0RvPvWqpew9UbQsLRhfB1TgZTojrzU-mbfgDA"
+    }
+  ]
+}
+2023-11-07 15:20:38,498:DEBUG:acme.client:Storing nonce: 254jphsyrFCtNvIg-z-ovk99aOCyAcAxGFoLSboaZB9NWmbjXEc
+2023-11-07 15:20:38,499:INFO:certbot._internal.auth_handler:Performing the following challenges:
+2023-11-07 15:20:38,500:INFO:certbot._internal.auth_handler:dns-01 challenge for multitecua.com
+2023-11-07 15:20:38,520:DEBUG:urllib3.util.retry:Converted retries value: 5 -> Retry(total=5, connect=None, read=None, redirect=None, status=None)
+2023-11-07 15:20:38,526:DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.cloudflare.com:443
+2023-11-07 15:20:39,657:DEBUG:urllib3.connectionpool:https://api.cloudflare.com:443 "GET /client/v4/zones?name=multitecua.com&per_page=1 HTTP/1.1" 200 None
+2023-11-07 15:20:39,660:DEBUG:certbot_dns_cloudflare._internal.dns_cloudflare:Found zone_id of 42a4a5e3184b1fce9e6a9cec9109552a for multitecua.com using name multitecua.com
+2023-11-07 15:20:39,661:DEBUG:certbot_dns_cloudflare._internal.dns_cloudflare:Attempting to add record to zone 42a4a5e3184b1fce9e6a9cec9109552a: {'type': 'TXT', 'name': '_acme-challenge.multitecua.com', 'content': '-nbaOnosWJfzSUML0NlaJ7oX2H9z__JAjkLwNr40MOs', 'ttl': 120}
+2023-11-07 15:20:40,363:DEBUG:urllib3.connectionpool:https://api.cloudflare.com:443 "POST /client/v4/zones/42a4a5e3184b1fce9e6a9cec9109552a/dns_records HTTP/1.1" 200 None
+2023-11-07 15:20:41,071:DEBUG:urllib3.connectionpool:https://api.cloudflare.com:443 "GET /client/v4/zones/42a4a5e3184b1fce9e6a9cec9109552a/dns_records?type=TXT&name=_acme-challenge.multitecua.com&content=-nbaOnosWJfzSUML0NlaJ7oX2H9z__JAjkLwNr40MOs&per_page=1 HTTP/1.1" 200 None
+2023-11-07 15:20:41,073:DEBUG:certbot_dns_cloudflare._internal.dns_cloudflare:Successfully added TXT record with record_id: 54a0b88f35c9a0719e092a093916f95c
+2023-11-07 15:20:41,079:DEBUG:certbot._internal.display.obj:Notifying user: Waiting 10 seconds for DNS changes to propagate
+2023-11-07 15:20:51,090:DEBUG:acme.client:JWS payload:
+b'{}'
+2023-11-07 15:20:51,095:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/chall-v3/281509935236/yorNJg:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMTQwMDk1ODEyNiIsICJub25jZSI6ICIyNTRqcGhzeXJGQ3ROdklnLXotb3ZrOTlhT0N5QWNBeEdGb0xTYm9hWkI5TldtYmpYRWMiLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2NoYWxsLXYzLzI4MTUwOTkzNTIzNi95b3JOSmcifQ",
+  "signature": "O5m3SoVHWeLIUPivCgLVKWR3HWu1kLH4z_I2b4I0mqvSosXiKBLJ-UGrUm0dafDcxhiMAFDmuIEPUIwjtrA9gPkWaPPTFB5aUru-6Kj31BJUWyrfpW1UYJ7McM80f5XC6a0cHqA1sDrSOFnAPRG8We_AxibmYgsmz687W5pLMzN9jQ1ceqHCnUA8SkkdtVLwwFBON7o_wTDuiKPYmdfqnae-wpBRbNyz9Ra_Tnu78jCFPsxZ7bYeqsq9ZqPEQEJkg7-9gk17oeqfoVYthx1IIcXJjj7nNtL6c8uTyokzWUywA_vmBgJnw2dKoOU6Jey48XrMLUWZ0t-UKQNhEBl3Dw",
+  "payload": "e30"
+}
+2023-11-07 15:20:51,316:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/chall-v3/281509935236/yorNJg HTTP/1.1" 200 186
+2023-11-07 15:20:51,317:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Tue, 07 Nov 2023 15:20:51 GMT
+Content-Type: application/json
+Content-Length: 186
+Connection: keep-alive
+Boulder-Requester: 1400958126
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index", <https://acme-v02.api.letsencrypt.org/acme/authz-v3/281509935236>;rel="up"
+Location: https://acme-v02.api.letsencrypt.org/acme/chall-v3/281509935236/yorNJg
+Replay-Nonce: 254jphsyuWKYRo_UwX1wJUNidbQEjEhGqek-rdQBOt8hAw2xvF0
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "type": "dns-01",
+  "status": "pending",
+  "url": "https://acme-v02.api.letsencrypt.org/acme/chall-v3/281509935236/yorNJg",
+  "token": "nnMHXT0RvPvWqpew9UbQsLRhfB1TgZTojrzU-mbfgDA"
+}
+2023-11-07 15:20:51,318:DEBUG:acme.client:Storing nonce: 254jphsyuWKYRo_UwX1wJUNidbQEjEhGqek-rdQBOt8hAw2xvF0
+2023-11-07 15:20:51,319:INFO:certbot._internal.auth_handler:Waiting for verification...
+2023-11-07 15:20:52,320:DEBUG:acme.client:JWS payload:
+b''
+2023-11-07 15:20:52,326:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/authz-v3/281509007196:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMTQwMDk1ODEyNiIsICJub25jZSI6ICIyNTRqcGhzeXVXS1lSb19Vd1gxd0pVTmlkYlFFakVoR3Flay1yZFFCT3Q4aEF3Mnh2RjAiLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2F1dGh6LXYzLzI4MTUwOTAwNzE5NiJ9",
+  "signature": "pAv8ThMvztKitYZYWaxDBg0040EnwDBISCZi-WdQjTZZNbbYOcUxgjDWsHWTO-yrKeiFmVNeKMfGnizruTqGerj4Tzeqm_TMbd7pOWYbucKHgGVhJXB9YcE3Py2EcMWbhFqp6Bf7XFCh1XL_CXUxKzv8J1DdlMFXEdq6Orm4S_wAdEZw-zxJull73klDI6dXD8B0CWM_g_ZFXwUSY4FC6eMlt93NaPnNlyDco06yjhgfB2I7vAu7BatsUKLjVfGZjbN1khYDePXeX7SK2W3c-_JgSqYyPGTElB7wQpVhfi2OOWH65n8bnqXH8tJK2Dc5tqwAl6SWJ9Z-tKPn0qk14Q",
+  "payload": ""
+}
+2023-11-07 15:20:52,538:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/authz-v3/281509007196 HTTP/1.1" 200 523
+2023-11-07 15:20:52,539:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Tue, 07 Nov 2023 15:20:52 GMT
+Content-Type: application/json
+Content-Length: 523
+Connection: keep-alive
+Boulder-Requester: 1400958126
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Replay-Nonce: QBeJ2mufcsqOi8xSQXtO4LoXf2K7XZ0iCx05wgs-AeDvs-FZTCo
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "identifier": {
+    "type": "dns",
+    "value": "multitecua.com"
+  },
+  "status": "valid",
+  "expires": "2023-12-07T15:06:52Z",
+  "challenges": [
+    {
+      "type": "dns-01",
+      "status": "valid",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall-v3/281509007196/khQw5w",
+      "token": "tUBwzxWG9D210XOhuGPWkXonWVNFccQHRH6gnTjVCpc",
+      "validationRecord": [
+        {
+          "hostname": "multitecua.com"
+        }
+      ],
+      "validated": "2023-11-07T15:06:51Z"
+    }
+  ],
+  "wildcard": true
+}
+2023-11-07 15:20:52,540:DEBUG:acme.client:Storing nonce: QBeJ2mufcsqOi8xSQXtO4LoXf2K7XZ0iCx05wgs-AeDvs-FZTCo
+2023-11-07 15:20:52,541:DEBUG:acme.client:JWS payload:
+b''
+2023-11-07 15:20:52,546:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/authz-v3/281509935236:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMTQwMDk1ODEyNiIsICJub25jZSI6ICJRQmVKMm11ZmNzcU9pOHhTUVh0TzRMb1hmMks3WFowaUN4MDV3Z3MtQWVEdnMtRlpUQ28iLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2F1dGh6LXYzLzI4MTUwOTkzNTIzNiJ9",
+  "signature": "LTJp6mddsDc6sb16p1lOZvNMiOTj_F8yWwFKejo5ojExguNnz6RGLmJ0tTgHAuBQeXIMte6L6DTscR9nkqVguaSwGBxABxewrYEnJsvM651EkXFz6icify3xMQ1VJpmC9iATTYVlgrlUVdmRfL4VEB0RTUobotuKUMds223wtcNKYO0WeMSmWGrYFJ32UX3ckEfEvNaAsgfKds_Uwmms3XURErdNkygkvV4nf9Nkuo2Je1kEwffZFv5nO4Dhx2_V92qn_KLSjiKE_DhPhh5_GchNUrBY0J6gnDpI6yPyqy0ze2fT2xClh1neL2RvM1QMPW9LeRthk_7o24XWM5vQsw",
+  "payload": ""
+}
+2023-11-07 15:20:52,762:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/authz-v3/281509935236 HTTP/1.1" 200 503
+2023-11-07 15:20:52,763:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Tue, 07 Nov 2023 15:20:52 GMT
+Content-Type: application/json
+Content-Length: 503
+Connection: keep-alive
+Boulder-Requester: 1400958126
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Replay-Nonce: 254jphsywpDm_hSQVBCqx1aaMS3cQPV-NKynLj0wLD1GQzihpk4
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "identifier": {
+    "type": "dns",
+    "value": "multitecua.com"
+  },
+  "status": "valid",
+  "expires": "2023-12-07T15:20:51Z",
+  "challenges": [
+    {
+      "type": "dns-01",
+      "status": "valid",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall-v3/281509935236/yorNJg",
+      "token": "nnMHXT0RvPvWqpew9UbQsLRhfB1TgZTojrzU-mbfgDA",
+      "validationRecord": [
+        {
+          "hostname": "multitecua.com"
+        }
+      ],
+      "validated": "2023-11-07T15:20:51Z"
+    }
+  ]
+}
+2023-11-07 15:20:52,764:DEBUG:acme.client:Storing nonce: 254jphsywpDm_hSQVBCqx1aaMS3cQPV-NKynLj0wLD1GQzihpk4
+2023-11-07 15:20:52,765:DEBUG:certbot._internal.error_handler:Calling registered functions
+2023-11-07 15:20:52,765:INFO:certbot._internal.auth_handler:Cleaning up challenges
+2023-11-07 15:20:52,782:DEBUG:urllib3.util.retry:Converted retries value: 5 -> Retry(total=5, connect=None, read=None, redirect=None, status=None)
+2023-11-07 15:20:52,786:DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.cloudflare.com:443
+2023-11-07 15:20:53,854:DEBUG:urllib3.connectionpool:https://api.cloudflare.com:443 "GET /client/v4/zones?name=multitecua.com&per_page=1 HTTP/1.1" 200 None
+2023-11-07 15:20:53,858:DEBUG:certbot_dns_cloudflare._internal.dns_cloudflare:Found zone_id of 42a4a5e3184b1fce9e6a9cec9109552a for multitecua.com using name multitecua.com
+2023-11-07 15:20:54,552:DEBUG:urllib3.connectionpool:https://api.cloudflare.com:443 "GET /client/v4/zones/42a4a5e3184b1fce9e6a9cec9109552a/dns_records?type=TXT&name=_acme-challenge.multitecua.com&content=-nbaOnosWJfzSUML0NlaJ7oX2H9z__JAjkLwNr40MOs&per_page=1 HTTP/1.1" 200 None
+2023-11-07 15:20:55,284:DEBUG:urllib3.connectionpool:https://api.cloudflare.com:443 "DELETE /client/v4/zones/42a4a5e3184b1fce9e6a9cec9109552a/dns_records/54a0b88f35c9a0719e092a093916f95c HTTP/1.1" 200 None
+2023-11-07 15:20:55,286:DEBUG:certbot_dns_cloudflare._internal.dns_cloudflare:Successfully deleted TXT record.
+2023-11-07 15:20:55,290:DEBUG:certbot._internal.client:CSR: CSR(file=None, data=b'-----BEGIN CERTIFICATE REQUEST-----\nMIH6MIGgAgEAMAAwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAATdXnVAjDOFqnXb\nM0+CjPVUCIHPP/BM/mhI2mijxknzIaV6QxQKAmKh7nS6dyVY2nDC6Wnh2KEGKzkY\nAwUkqUffoD4wPAYJKoZIhvcNAQkOMS8wLTArBgNVHREEJDAigg5tdWx0aXRlY3Vh\nLmNvbYIQKi5tdWx0aXRlY3VhLmNvbTAKBggqhkjOPQQDAgNJADBGAiEAgxJoCVJd\nt5Y1sEdiHddmzDmnjamKSnt/Hk9Jyf3byRACIQCehwOtHG3mr+THdy5xJB6hPUwu\n1gMN8oUx1TWI0qASbw==\n-----END CERTIFICATE REQUEST-----\n', form='pem')
+2023-11-07 15:20:55,291:DEBUG:certbot._internal.client:Will poll for certificate issuance until 2023-11-07 15:22:25.291848
+2023-11-07 15:20:55,293:DEBUG:acme.client:JWS payload:
+b'{\n  "csr": "MIH6MIGgAgEAMAAwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAATdXnVAjDOFqnXbM0-CjPVUCIHPP_BM_mhI2mijxknzIaV6QxQKAmKh7nS6dyVY2nDC6Wnh2KEGKzkYAwUkqUffoD4wPAYJKoZIhvcNAQkOMS8wLTArBgNVHREEJDAigg5tdWx0aXRlY3VhLmNvbYIQKi5tdWx0aXRlY3VhLmNvbTAKBggqhkjOPQQDAgNJADBGAiEAgxJoCVJdt5Y1sEdiHddmzDmnjamKSnt_Hk9Jyf3byRACIQCehwOtHG3mr-THdy5xJB6hPUwu1gMN8oUx1TWI0qASbw"\n}'
+2023-11-07 15:20:55,299:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/finalize/1400958126/220545823226:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMTQwMDk1ODEyNiIsICJub25jZSI6ICIyNTRqcGhzeXdwRG1faFNRVkJDcXgxYWFNUzNjUVBWLU5LeW5MajB3TEQxR1F6aWhwazQiLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2ZpbmFsaXplLzE0MDA5NTgxMjYvMjIwNTQ1ODIzMjI2In0",
+  "signature": "HXyWF96ikJWoTm8bckBFoo0V_dQ89IPt1RuscdUo5hZGzT9HGJ1dNzFWSjpHe8X1HGkYWtbrDceweTE62QA8X3JH7VpBU7cVNIXJXfHy_E-kWU1FbvCidTakd0eFOAXvklVsmI2GWrC81Nn_c5MG-w1ZkvSodRcckZOsFwzCcjFMWzgFFFFzbC7HbB2v7VLql9fxkL8ohVWZJbNS6trpaiuAfnh022DJXIFPLNJCoRjHmv5VzugwLCbQkpOtI7aW0VEhUoxhPjV4OlOW8UTPqcZxLoZWTlZZbgG1QHUh4_0CYz1p040PNUgjhdIa-GoTy9hhFDAjA9t8CvwilXba5g",
+  "payload": "ewogICJjc3IiOiAiTUlINk1JR2dBZ0VBTUFBd1dUQVRCZ2NxaGtqT1BRSUJCZ2dxaGtqT1BRTUJCd05DQUFUZFhuVkFqRE9GcW5YYk0wLUNqUFZVQ0lIUFBfQk1fbWhJMm1panhrbnpJYVY2UXhRS0FtS2g3blM2ZHlWWTJuREM2V25oMktFR0t6a1lBd1VrcVVmZm9ENHdQQVlKS29aSWh2Y05BUWtPTVM4d0xUQXJCZ05WSFJFRUpEQWlnZzV0ZFd4MGFYUmxZM1ZoTG1OdmJZSVFLaTV0ZFd4MGFYUmxZM1ZoTG1OdmJUQUtCZ2dxaGtqT1BRUURBZ05KQURCR0FpRUFneEpvQ1ZKZHQ1WTFzRWRpSGRkbXpEbW5qYW1LU250X0hrOUp5ZjNieVJBQ0lRQ2Vod090SEczbXItVEhkeTV4SkI2aFBVd3UxZ01OOG9VeDFUV0kwcUFTYnciCn0"
+}
+2023-11-07 15:20:55,675:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/finalize/1400958126/220545823226 HTTP/1.1" 200 581
+2023-11-07 15:20:55,676:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Tue, 07 Nov 2023 15:20:55 GMT
+Content-Type: application/json
+Content-Length: 581
+Connection: keep-alive
+Boulder-Requester: 1400958126
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Location: https://acme-v02.api.letsencrypt.org/acme/order/1400958126/220545823226
+Replay-Nonce: 254jphsyC_OFDw_joB3t_a0iTeT_jMCi-XjWEPKihv0PxtY2Zt0
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "status": "valid",
+  "expires": "2023-11-14T15:10:55Z",
+  "identifiers": [
+    {
+      "type": "dns",
+      "value": "*.multitecua.com"
+    },
+    {
+      "type": "dns",
+      "value": "multitecua.com"
+    }
+  ],
+  "authorizations": [
+    "https://acme-v02.api.letsencrypt.org/acme/authz-v3/281509007196",
+    "https://acme-v02.api.letsencrypt.org/acme/authz-v3/281509935236"
+  ],
+  "finalize": "https://acme-v02.api.letsencrypt.org/acme/finalize/1400958126/220545823226",
+  "certificate": "https://acme-v02.api.letsencrypt.org/acme/cert/0368848766f1ee944d8de3fa2b5022ba9fa5"
+}
+2023-11-07 15:20:55,677:DEBUG:acme.client:Storing nonce: 254jphsyC_OFDw_joB3t_a0iTeT_jMCi-XjWEPKihv0PxtY2Zt0
+2023-11-07 15:20:56,679:DEBUG:acme.client:JWS payload:
+b''
+2023-11-07 15:20:56,684:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/order/1400958126/220545823226:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMTQwMDk1ODEyNiIsICJub25jZSI6ICIyNTRqcGhzeUNfT0ZEd19qb0IzdF9hMGlUZVRfak1DaS1YaldFUEtpaHYwUHh0WTJadDAiLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL29yZGVyLzE0MDA5NTgxMjYvMjIwNTQ1ODIzMjI2In0",
+  "signature": "XFuV3KRBXXv067Ah3qc0zt1ejiAdNTXXJKrANeSEtelnA2aMPDS1nLsEO65QER_EiFwyoCvYUV8i6Nchrol8eeSEDwjeNceYG3JCSo1uLk8ihXByLFLmKJypquyWsmv7rwOqKVL-JkbvfuaZMmaIBZFxU2vsY4sPRlDcx158W0-x4KGwokkUdg53THbF8HaV3cFY4RY7BHc5fz9S4M3caGbsc_j81ofLI0RaKbjT3MSaCWHXkoAQf8ZsQ9pZeh5kBLZY7XXEpapyjAmBwqEukg4IRSwDx7SAlmzFONsjZGkB9G9TaPJE_dHRjssCknftGRtoW1t2NjNw2qnGY9khdg",
+  "payload": ""
+}
+2023-11-07 15:20:56,897:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/order/1400958126/220545823226 HTTP/1.1" 200 581
+2023-11-07 15:20:56,898:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Tue, 07 Nov 2023 15:20:56 GMT
+Content-Type: application/json
+Content-Length: 581
+Connection: keep-alive
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Replay-Nonce: QBeJ2mufWX7X2WKrhWwyae70Gicd28JASopy7pqi0bwDEd2hHWk
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "status": "valid",
+  "expires": "2023-11-14T15:10:55Z",
+  "identifiers": [
+    {
+      "type": "dns",
+      "value": "*.multitecua.com"
+    },
+    {
+      "type": "dns",
+      "value": "multitecua.com"
+    }
+  ],
+  "authorizations": [
+    "https://acme-v02.api.letsencrypt.org/acme/authz-v3/281509007196",
+    "https://acme-v02.api.letsencrypt.org/acme/authz-v3/281509935236"
+  ],
+  "finalize": "https://acme-v02.api.letsencrypt.org/acme/finalize/1400958126/220545823226",
+  "certificate": "https://acme-v02.api.letsencrypt.org/acme/cert/0368848766f1ee944d8de3fa2b5022ba9fa5"
+}
+2023-11-07 15:20:56,899:DEBUG:acme.client:Storing nonce: QBeJ2mufWX7X2WKrhWwyae70Gicd28JASopy7pqi0bwDEd2hHWk
+2023-11-07 15:20:56,899:DEBUG:acme.client:JWS payload:
+b''
+2023-11-07 15:20:56,904:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/cert/0368848766f1ee944d8de3fa2b5022ba9fa5:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMTQwMDk1ODEyNiIsICJub25jZSI6ICJRQmVKMm11ZldYN1gyV0tyaFd3eWFlNzBHaWNkMjhKQVNvcHk3cHFpMGJ3REVkMmhIV2siLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2NlcnQvMDM2ODg0ODc2NmYxZWU5NDRkOGRlM2ZhMmI1MDIyYmE5ZmE1In0",
+  "signature": "gho0R60UCIkknF3AEDOWyr_Fb6MIaSf1E9MVk6aqobze4HZaIGx_MR-iFenb1rQB3JLkDG7JkbOnmYZnPCV8VBsPu5K6Aza4w2UQez8IM1_QSLZbSDjiIXKSenZoE2yyBwx_8x05ltRxfeY5oqPp2qaedcuT0QiOzBwMnEVG5epCbzWh4LgsWXbGgZ6m0XzJZPkZEMSBTBsFK5qs7hi32tp_W5kyTKZyzoTr_789uN1E28Z55EyJqbHmw5htapAI_RmmwC2PEkgCMTJVt3x7r55Qcqjp_4JnpQasqzrZRg0BBQFOntkZ3zbH6ynJHMyp4PmuTU2GrkWshx2m6MuH0A",
+  "payload": ""
+}
+2023-11-07 15:20:57,130:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/cert/0368848766f1ee944d8de3fa2b5022ba9fa5 HTTP/1.1" 200 5264
+2023-11-07 15:20:57,131:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Tue, 07 Nov 2023 15:20:57 GMT
+Content-Type: application/pem-certificate-chain
+Content-Length: 5264
+Connection: keep-alive
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index", <https://acme-v02.api.letsencrypt.org/acme/cert/0368848766f1ee944d8de3fa2b5022ba9fa5/1>;rel="alternate"
+Replay-Nonce: QBeJ2mufq6-Y0VN1xOBWAGqBIH9SYkg8T--BI2yo6gklMa0m9vk
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+-----BEGIN CERTIFICATE-----
+MIIEMTCCAxmgAwIBAgISA2iEh2bx7pRNjeP6K1Aiup+lMA0GCSqGSIb3DQEBCwUA
+MDIxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQswCQYDVQQD
+EwJSMzAeFw0yMzExMDcxNDIwNTVaFw0yNDAyMDUxNDIwNTRaMBkxFzAVBgNVBAMT
+Dm11bHRpdGVjdWEuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE3V51QIwz
+hap12zNPgoz1VAiBzz/wTP5oSNpoo8ZJ8yGlekMUCgJioe50unclWNpwwulp4dih
+Bis5GAMFJKlH36OCAiMwggIfMA4GA1UdDwEB/wQEAwIHgDAdBgNVHSUEFjAUBggr
+BgEFBQcDAQYIKwYBBQUHAwIwDAYDVR0TAQH/BAIwADAdBgNVHQ4EFgQU1kh/+0Iy
+nEs0Q6WS0lljYmJkC54wHwYDVR0jBBgwFoAUFC6zF7dYVsuuUAlA5h+vnYsUwsYw
+VQYIKwYBBQUHAQEESTBHMCEGCCsGAQUFBzABhhVodHRwOi8vcjMuby5sZW5jci5v
+cmcwIgYIKwYBBQUHMAKGFmh0dHA6Ly9yMy5pLmxlbmNyLm9yZy8wKwYDVR0RBCQw
+IoIQKi5tdWx0aXRlY3VhLmNvbYIObXVsdGl0ZWN1YS5jb20wEwYDVR0gBAwwCjAI
+BgZngQwBAgEwggEFBgorBgEEAdZ5AgQCBIH2BIHzAPEAdgBIsONr2qZHNA/lagL6
+nTDrHFIBy1bdLIHZu7+rOdiEcwAAAYuqX1HZAAAEAwBHMEUCIDOw3ZWDy2WsjUnC
+i0SArTsoGDOy+OQBgCI/bVsVFMkyAiEAkLadMeeXTUH0Bi52i8uXZdSf8oiicu7Z
+7Rw6O+d3bpgAdwA7U3d1Pi25gE6LMFsG/kA7Z9hPw/THvQANLXJv4frUFwAAAYuq
+X1HiAAAEAwBIMEYCIQC7UFeETaBGu6NTARMdyNs8TBRNz3aDhYzAFIeGqLYbzQIh
+AIUhgnKpm2DDrISJU+e9HsU0JhGS9tmRuqdl50qinu9YMA0GCSqGSIb3DQEBCwUA
+A4IBAQAnX6NvcR7KTg6PZINRVPwuhg85TsCsVBZufGXZptICH11Jyaz+mTOQ+q2M
+/iWjenFhfmUAeWyMYMvkXF/5BNU6qdEjTaZCTKfq0dqVtb5nsC33Ll76Ol+xa5/v
+BCEhFx2fe6Ya09rO0sLsBzIToFwLKiW7OaECuZGGuIXyE33TzeSgF/kUvQ40uouP
+wAsZRAWB7rhTFAsukNUv8fnS3avmIwmVpU7GXqc5p6plPZcUxotvF7FI1x9WFz4T
+z87vh7fjlDmqJp+XrGIkyFGh9Ser0NUl18mLWJrBmxEJhByEfsFbQPYaLFCv5qoU
+YUmhTiB/+kBZT+PKhOX9fKwftKWQ
+-----END CERTIFICATE-----
+
+-----BEGIN CERTIFICATE-----
+MIIFFjCCAv6gAwIBAgIRAJErCErPDBinU/bWLiWnX1owDQYJKoZIhvcNAQELBQAw
+TzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh
+cmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwHhcNMjAwOTA0MDAwMDAw
+WhcNMjUwOTE1MTYwMDAwWjAyMQswCQYDVQQGEwJVUzEWMBQGA1UEChMNTGV0J3Mg
+RW5jcnlwdDELMAkGA1UEAxMCUjMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK
+AoIBAQC7AhUozPaglNMPEuyNVZLD+ILxmaZ6QoinXSaqtSu5xUyxr45r+XXIo9cP
+R5QUVTVXjJ6oojkZ9YI8QqlObvU7wy7bjcCwXPNZOOftz2nwWgsbvsCUJCWH+jdx
+sxPnHKzhm+/b5DtFUkWWqcFTzjTIUu61ru2P3mBw4qVUq7ZtDpelQDRrK9O8Zutm
+NHz6a4uPVymZ+DAXXbpyb/uBxa3Shlg9F8fnCbvxK/eG3MHacV3URuPMrSXBiLxg
+Z3Vms/EY96Jc5lP/Ooi2R6X/ExjqmAl3P51T+c8B5fWmcBcUr2Ok/5mzk53cU6cG
+/kiFHaFpriV1uxPMUgP17VGhi9sVAgMBAAGjggEIMIIBBDAOBgNVHQ8BAf8EBAMC
+AYYwHQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMBMBIGA1UdEwEB/wQIMAYB
+Af8CAQAwHQYDVR0OBBYEFBQusxe3WFbLrlAJQOYfr52LFMLGMB8GA1UdIwQYMBaA
+FHm0WeZ7tuXkAXOACIjIGlj26ZtuMDIGCCsGAQUFBwEBBCYwJDAiBggrBgEFBQcw
+AoYWaHR0cDovL3gxLmkubGVuY3Iub3JnLzAnBgNVHR8EIDAeMBygGqAYhhZodHRw
+Oi8veDEuYy5sZW5jci5vcmcvMCIGA1UdIAQbMBkwCAYGZ4EMAQIBMA0GCysGAQQB
+gt8TAQEBMA0GCSqGSIb3DQEBCwUAA4ICAQCFyk5HPqP3hUSFvNVneLKYY611TR6W
+PTNlclQtgaDqw+34IL9fzLdwALduO/ZelN7kIJ+m74uyA+eitRY8kc607TkC53wl
+ikfmZW4/RvTZ8M6UK+5UzhK8jCdLuMGYL6KvzXGRSgi3yLgjewQtCPkIVz6D2QQz
+CkcheAmCJ8MqyJu5zlzyZMjAvnnAT45tRAxekrsu94sQ4egdRCnbWSDtY7kh+BIm
+lJNXoB1lBMEKIq4QDUOXoRgffuDghje1WrG9ML+Hbisq/yFOGwXD9RiX8F6sw6W4
+avAuvDszue5L3sz85K+EC4Y/wFVDNvZo4TYXao6Z0f+lQKc0t8DQYzk1OXVu8rp2
+yJMC6alLbBfODALZvYH7n7do1AZls4I9d1P4jnkDrQoxB3UqQ9hVl3LEKQ73xF1O
+yK5GhDDX8oVfGKF5u+decIsH4YaTw7mP3GFxJSqv3+0lUFJoi5Lc5da149p90Ids
+hCExroL1+7mryIkXPeFM5TgO9r0rvZaBFOvV2z0gp35Z0+L4WPlbuEjN/lxPFin+
+HlUjr8gRsI3qfJOQFy/9rKIJR0Y/8Omwt/8oTWgy1mdeHmmjk7j1nYsvC9JSQ6Zv
+MldlTTKB3zhThV1+XWYp6rjd5JW1zbVWEkLNxE7GJThEUG3szgBVGP7pSWTUTsqX
+nLRbwHOoq7hHwg==
+-----END CERTIFICATE-----
+
+-----BEGIN CERTIFICATE-----
+MIIFYDCCBEigAwIBAgIQQAF3ITfU6UK47naqPGQKtzANBgkqhkiG9w0BAQsFADA/
+MSQwIgYDVQQKExtEaWdpdGFsIFNpZ25hdHVyZSBUcnVzdCBDby4xFzAVBgNVBAMT
+DkRTVCBSb290IENBIFgzMB4XDTIxMDEyMDE5MTQwM1oXDTI0MDkzMDE4MTQwM1ow
+TzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh
+cmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwggIiMA0GCSqGSIb3DQEB
+AQUAA4ICDwAwggIKAoICAQCt6CRz9BQ385ueK1coHIe+3LffOJCMbjzmV6B493XC
+ov71am72AE8o295ohmxEk7axY/0UEmu/H9LqMZshftEzPLpI9d1537O4/xLxIZpL
+wYqGcWlKZmZsj348cL+tKSIG8+TA5oCu4kuPt5l+lAOf00eXfJlII1PoOK5PCm+D
+LtFJV4yAdLbaL9A4jXsDcCEbdfIwPPqPrt3aY6vrFk/CjhFLfs8L6P+1dy70sntK
+4EwSJQxwjQMpoOFTJOwT2e4ZvxCzSow/iaNhUd6shweU9GNx7C7ib1uYgeGJXDR5
+bHbvO5BieebbpJovJsXQEOEO3tkQjhb7t/eo98flAgeYjzYIlefiN5YNNnWe+w5y
+sR2bvAP5SQXYgd0FtCrWQemsAXaVCg/Y39W9Eh81LygXbNKYwagJZHduRze6zqxZ
+Xmidf3LWicUGQSk+WT7dJvUkyRGnWqNMQB9GoZm1pzpRboY7nn1ypxIFeFntPlF4
+FQsDj43QLwWyPntKHEtzBRL8xurgUBN8Q5N0s8p0544fAQjQMNRbcTa0B7rBMDBc
+SLeCO5imfWCKoqMpgsy6vYMEG6KDA0Gh1gXxG8K28Kh8hjtGqEgqiNx2mna/H2ql
+PRmP6zjzZN7IKw0KKP/32+IVQtQi0Cdd4Xn+GOdwiK1O5tmLOsbdJ1Fu/7xk9TND
+TwIDAQABo4IBRjCCAUIwDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAQYw
+SwYIKwYBBQUHAQEEPzA9MDsGCCsGAQUFBzAChi9odHRwOi8vYXBwcy5pZGVudHJ1
+c3QuY29tL3Jvb3RzL2RzdHJvb3RjYXgzLnA3YzAfBgNVHSMEGDAWgBTEp7Gkeyxx
++tvhS5B1/8QVYIWJEDBUBgNVHSAETTBLMAgGBmeBDAECATA/BgsrBgEEAYLfEwEB
+ATAwMC4GCCsGAQUFBwIBFiJodHRwOi8vY3BzLnJvb3QteDEubGV0c2VuY3J5cHQu
+b3JnMDwGA1UdHwQ1MDMwMaAvoC2GK2h0dHA6Ly9jcmwuaWRlbnRydXN0LmNvbS9E
+U1RST09UQ0FYM0NSTC5jcmwwHQYDVR0OBBYEFHm0WeZ7tuXkAXOACIjIGlj26Ztu
+MA0GCSqGSIb3DQEBCwUAA4IBAQAKcwBslm7/DlLQrt2M51oGrS+o44+/yQoDFVDC
+5WxCu2+b9LRPwkSICHXM6webFGJueN7sJ7o5XPWioW5WlHAQU7G75K/QosMrAdSW
+9MUgNTP52GE24HGNtLi1qoJFlcDyqSMo59ahy2cI2qBDLKobkx/J3vWraV0T9VuG
+WCLKTVXkcGdtwlfFRjlBz4pYg1htmf5X6DYO8A4jqv2Il9DjXA6USbW1FzXSLr9O
+he8Y4IWS6wY7bCkjCWDcRQJMEhg76fsO3txE+FiYruq9RUWhiF1myv4Q6W+CyBFC
+Dfvp7OOGAN6dEOM4+qR9sdjoSYKEBpsr6GtPAQw4dy753ec5
+-----END CERTIFICATE-----
+
+2023-11-07 15:20:57,132:DEBUG:acme.client:Storing nonce: QBeJ2mufq6-Y0VN1xOBWAGqBIH9SYkg8T--BI2yo6gklMa0m9vk
+2023-11-07 15:20:57,136:DEBUG:certbot._internal.storage:Creating directory /etc/letsencrypt/archive.
+2023-11-07 15:20:57,136:DEBUG:certbot._internal.storage:Creating directory /etc/letsencrypt/live.
+2023-11-07 15:20:57,137:DEBUG:certbot._internal.storage:Writing README to /etc/letsencrypt/live/README.
+2023-11-07 15:20:57,137:DEBUG:certbot._internal.storage:Creating directory /etc/letsencrypt/archive/certs.
+2023-11-07 15:20:57,138:DEBUG:certbot._internal.storage:Creating directory /etc/letsencrypt/live/certs.
+2023-11-07 15:20:57,139:DEBUG:certbot._internal.storage:Writing certificate to /etc/letsencrypt/live/certs/cert.pem.
+2023-11-07 15:20:57,139:DEBUG:certbot._internal.storage:Writing private key to /etc/letsencrypt/live/certs/privkey.pem.
+2023-11-07 15:20:57,140:DEBUG:certbot._internal.storage:Writing chain to /etc/letsencrypt/live/certs/chain.pem.
+2023-11-07 15:20:57,140:DEBUG:certbot._internal.storage:Writing full chain to /etc/letsencrypt/live/certs/fullchain.pem.
+2023-11-07 15:20:57,140:DEBUG:certbot._internal.storage:Writing README to /etc/letsencrypt/live/certs/README.
+2023-11-07 15:20:57,157:DEBUG:certbot.configuration:Var account=1340309e0d3a2668009684ad747641d8 (set by user).
+2023-11-07 15:20:57,159:DEBUG:certbot._internal.plugins.selection:Requested authenticator dns-cloudflare and installer None
+2023-11-07 15:20:57,159:DEBUG:certbot._internal.plugins.selection:Requested authenticator dns-cloudflare and installer None
+2023-11-07 15:20:57,160:DEBUG:certbot.configuration:Var dns_cloudflare_credentials=/cloudflare.ini (set by user).
+2023-11-07 15:20:57,160:DEBUG:certbot._internal.storage:Writing new config /etc/letsencrypt/renewal/certs.conf.
+2023-11-07 15:20:57,167:DEBUG:certbot._internal.display.obj:Notifying user: 
+Successfully received certificate.
+Certificate is saved at: /etc/letsencrypt/live/certs/fullchain.pem
+Key is saved at:         /etc/letsencrypt/live/certs/privkey.pem
+This certificate expires on 2024-02-05.
+These files will be updated when the certificate renews.
+2023-11-07 15:20:57,167:DEBUG:certbot._internal.display.obj:Notifying user: NEXT STEPS:
+2023-11-07 15:20:57,168:DEBUG:certbot._internal.display.obj:Notifying user: - The certificate will need to be renewed before it expires. Certbot can automatically renew the certificate in the background, but you may need to take steps to enable that functionality. See https://certbot.org/renewal-setup for instructions.
+2023-11-07 15:20:57,172:DEBUG:certbot._internal.display.obj:Notifying user: If you like Certbot, please consider supporting our work by:
+ * Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+ * Donating to EFF:                    https://eff.org/donate-le
