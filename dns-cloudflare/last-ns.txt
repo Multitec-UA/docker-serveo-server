@@ -1,0 +1,8 @@
+HOSTALIA:
+ns10.servicio-online.net
+ns11.servicio-online.net
+ns12.servicio-online.net
+
+new:
+devin.ns.cloudflare.com
+jamie.ns.cloudflare.com
