@@ -44,8 +44,8 @@ $ sudo docker-compose logs serveo
 # Attaching to docker-serveo-server_serveo_1
 # serveo_1  | 2019/03/16 13:11:42 Listening on :2222...
 
-$ ssh -R test.example.com:443:localhost:80 example.com -p 2222 # on another computer
-# Forwarding HTTP traffic from https://test.example.com
+$ ssh -R test.multitecua.com:443:localhost:80 multitecua.com -p 2222 # on another computer
+# Forwarding HTTP traffic from https://test.multitecua.com
 # Press g to start a GUI session and ctrl-c to quit.
 ```
 
